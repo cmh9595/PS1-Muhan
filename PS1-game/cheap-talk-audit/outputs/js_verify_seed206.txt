@@ -1,0 +1,49 @@
+
+=== Cheap-Talk Audit — seeded schedule check, seed = 206 ===
+
+rd  alignment   similarity  message   agent_action  benchmark
+ 1  aligned    different  explicit  kept          trust
+ 2  aligned    same       explicit  kept          trust
+ 3  aligned    different  explicit  kept          trust
+ 4  aligned    same       explicit  kept          trust
+ 5  misaligned different  explicit  kept          verify
+ 6  misaligned same       explicit  broke         verify
+ 7  misaligned same       hedged    broke         verify
+ 8  aligned    different  explicit  kept          trust
+ 9  aligned    same       explicit  kept          trust
+10  misaligned different  explicit  broke         verify
+11  misaligned different  explicit  broke         verify
+12  misaligned same       explicit  broke         verify
+
+-- design check: 6 aligned / 6 misaligned, 6 same / 6 different
+-- cell counts (must be 3 each): {
+  'aligned/diff': 3,
+  'aligned/same': 3,
+  'misaligned/diff': 3,
+  'misaligned/same': 3
+}
+
+--- strategy: always-trust ---
+  trust rate  aligned 6/6 (100%)   misaligned 6/6 (100%)
+  similarity bias  same 6/6 vs different 6/6  =>  0 pp
+  promise-action gap  overall 4/11 (36%)   aligned 0/6 (0%)   misaligned 4/5 (80%)
+  payoff +22  vs benchmark +48   benchmark match 6/12   forgone by over-trust 26
+
+--- strategy: benchmark (trust iff aligned) ---
+  trust rate  aligned 6/6 (100%)   misaligned 0/6 (0%)
+  similarity bias  same 3/6 vs different 3/6  =>  0 pp
+  promise-action gap  overall 4/11 (36%)   aligned 0/6 (0%)   misaligned 4/5 (80%)
+  payoff +48  vs benchmark +48   benchmark match 12/12   forgone by over-trust 0
+
+--- strategy: similarity-driven (trust iff resembles you) ---
+  trust rate  aligned 3/6 (50%)   misaligned 3/6 (50%)
+  similarity bias  same 6/6 vs different 0/6  =>  +100 pp
+  promise-action gap  overall 4/11 (36%)   aligned 0/6 (0%)   misaligned 4/5 (80%)
+  payoff +18  vs benchmark +48   benchmark match 6/12   forgone by over-trust 18
+
+--- strategy: always-verify ---
+  trust rate  aligned 0/6 (0%)   misaligned 0/6 (0%)
+  similarity bias  same 0/6 vs different 0/6  =>  0 pp
+  promise-action gap  overall 4/11 (36%)   aligned 0/6 (0%)   misaligned 4/5 (80%)
+  payoff +24  vs benchmark +48   benchmark match 6/12   forgone by over-trust 0
+
