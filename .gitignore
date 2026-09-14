@@ -1,9 +1,0 @@
-*.aux
-*.log
-*.out
-*.fls
-*.fdb_latexmk
-*.blg
-main.pdf
-__pycache__/
-.DS_Store
