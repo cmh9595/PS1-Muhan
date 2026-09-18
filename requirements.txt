@@ -1,0 +1,4 @@
+# No external dependencies.
+# This repository uses only the Python 3 standard library
+# (random, json, os, unittest).
+# Tested with Python 3.12.
