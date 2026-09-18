@@ -1,0 +1,23 @@
+{
+  "p_star": 0.6,
+  "seed_206": {
+    "policy_totals": {
+      "benchmark": 38,
+      "always_verify": 24,
+      "always_trust": 22,
+      "similarity": 28
+    },
+    "p_aligned_given_same": 0.3333333333333333
+  },
+  "monte_carlo_1000_seeds": {
+    "policy_means": {
+      "benchmark": 38.74,
+      "always_verify": 24.0,
+      "always_trust": 17.56,
+      "similarity": 20.5
+    },
+    "mean_p_aligned_given_same": 0.497,
+    "share_similarity_below_always_verify": 0.587
+  },
+  "note": "This engine uses Python's standard random module seeded independently of the original JavaScript mulberry32 engine described in the PS1 proposal. Numbers here are internally reproducible (same seed -> same output) but are not bit-identical to the original JS/Python cross-checked totals reported in the paper. The qualitative claims (p*=0.6; benchmark outperforms similarity-only rule; similarity carries no real information about type) are the reproducible evidence this repository supports."
+}
